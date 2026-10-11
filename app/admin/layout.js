@@ -26,7 +26,7 @@ export default function AdminLayout({ children }) {
         <p className="font-display text-lg font-semibold">Paa Asane Admin</p>
         <nav className="mt-4 flex flex-wrap gap-2 md:flex-col">
           {nav.map(([h, l]) => (
-            <Link key={h} href={h} className={`rounded-lg px-3 py-2 text-sm ${path === h ? 'bg-lime font-semibold text-ink' : 'hover:bg-white/10'}`}>{l}</Link>
+            <Link key={h} href={h} className={`rounded-lg px-3 py-2 text-sm ${path === h ? 'bg-accent font-semibold text-ink' : 'hover:bg-white/10'}`}>{l}</Link>
           ))}
           <button className="rounded-lg px-3 py-2 text-left text-sm hover:bg-white/10" onClick={async () => { await supabase.auth.signOut(); router.replace('/admin/login') }}>Log out</button>
         </nav>

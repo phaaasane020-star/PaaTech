@@ -49,7 +49,7 @@ export default function Settings() {
   return (
     <div className="max-w-3xl">
       <h1 className="text-3xl font-semibold">Settings</h1>
-      {msg && <p className="mt-3 rounded-lg bg-lime px-4 py-2 text-sm font-semibold">{msg}</p>}
+      {msg && <p className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold">{msg}</p>}
       <h2 className="mt-8 text-xl font-semibold">Branding</h2>
       <div className="mt-4 grid gap-5 md:grid-cols-2">
         <Upload field="logo_url" title="Website logo" help="Shown in the navbar. Transparent PNG or SVG works best." />

@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import { PageHead, ReviewCard } from '../Cards'
+import ReviewCarousel from '../ReviewCarousel'
 
 export const revalidate = 30
 export const metadata = { title: 'Reviews', description: 'Ratings and reviews from real clients of Paa Asane Technologies.' }
@@ -16,8 +17,10 @@ export default async function Reviews() {
           <>
             <div className="card mb-6 flex items-center gap-6 md:w-fit">
               <p className="font-display text-5xl font-semibold">{avg}</p>
-              <div><p style={{ color: '#526600' }}>{'★'.repeat(Math.round(avg))}{'☆'.repeat(5 - Math.round(avg))}</p><p className="text-sm text-muted">{n} review{n > 1 ? 's' : ''}</p></div>
+              <div><p style={{ color: '#B47F00' }}>{'★'.repeat(Math.round(avg))}{'☆'.repeat(5 - Math.round(avg))}</p><p className="text-sm text-muted">{n} review{n > 1 ? 's' : ''}</p></div>
             </div>
+            <div className="my-12"><ReviewCarousel reviews={reviews.slice(0, 10)} /></div>
+            <h2 className="mb-6 text-2xl font-semibold">All reviews</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{reviews.map((r) => <ReviewCard key={r.id} r={r} />)}</div>
           </>
         ) : <p className="text-muted">Reviews from my first clients will show here.</p>}

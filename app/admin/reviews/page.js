@@ -17,7 +17,7 @@ export default function Reviews() {
         {list.map((r) => (
           <div key={r.id} className="card">
             <div className="flex items-start justify-between gap-3">
-              <div><p className="font-semibold">{r.client_name} <span className="text-[#526600]">{stars(r.rating)}</span></p><p className="text-xs text-muted">{r.service_name} · {r.status}</p></div>
+              <div><p className="font-semibold">{r.client_name} <span className="text-[#B47F00]">{stars(r.rating)}</span></p><p className="text-xs text-muted">{r.service_name} · {r.status}</p></div>
               <div className="flex gap-2">
                 {r.status !== 'approved' && <button className="btn" onClick={() => setStatus(r.id, 'approved')}>Approve</button>}
                 {r.status !== 'hidden' && <button className="btn-ghost" onClick={() => setStatus(r.id, 'hidden')}>Hide</button>}

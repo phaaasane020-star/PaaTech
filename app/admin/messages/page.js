@@ -18,7 +18,7 @@ export default function Messages() {
           <div key={m.id} className={`card ${m.is_read ? '' : 'border-l-4 border-l-brand'}`}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="font-semibold">{m.name} {!m.is_read && <span className="ml-1 rounded bg-lime px-2 py-0.5 text-xs">New</span>}</p>
+                <p className="font-semibold">{m.name} {!m.is_read && <span className="ml-1 rounded bg-accent px-2 py-0.5 text-xs">New</span>}</p>
                 <p className="text-xs text-muted">{m.phone} · {m.service || 'No service chosen'} · {new Date(m.created_at).toLocaleString()}</p>
               </div>
               <div className="flex gap-2">

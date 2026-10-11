@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { supabase, waLink } from '@/lib/supabase'
-import { ServiceCards, ProjectCard, ReviewCard } from './Cards'
+import { ServiceCards, ProjectCard } from './Cards'
+import ReviewCarousel from './ReviewCarousel'
 import { services } from '@/lib/services'
 import { harambee } from '@/lib/featured'
 
@@ -25,7 +26,7 @@ export default async function Home() {
   return (
     <>
       <section className="relative overflow-hidden rounded-b-[2.5rem] text-white"
-        style={{ background: 'radial-gradient(900px 480px at 88% 8%, rgba(200,241,53,.2), transparent 60%), radial-gradient(700px 480px at 0% 100%, rgba(27,90,63,.85), transparent 60%), linear-gradient(160deg, #0F3D2A, #07231A)' }}>
+        style={{ background: 'radial-gradient(900px 480px at 88% 8%, rgba(255, 187, 0,.2), transparent 60%), radial-gradient(700px 480px at 0% 100%, rgba(90, 84, 106,.85), transparent 60%), linear-gradient(160deg, #474150, #2B2733)' }}>
         <div className="glow-a" aria-hidden="true" /><div className="glow-b" aria-hidden="true" />
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-36 md:grid-cols-[1.15fr_1fr] md:pb-28 md:pt-44">
           <div>
@@ -33,13 +34,13 @@ export default async function Home() {
             <p className="hero-in d1 mt-5 text-xl text-white/90">I help with <span className="word-rotor" aria-hidden="true"><span className="word-track"><span>websites</span><span>web apps</span><span>Windows setups</span><span>laptop repairs</span><span>websites</span></span></span><span className="sr-only">websites, web apps, Windows setups and laptop repairs</span></p>
             <p className="hero-in d1 mt-6 max-w-xl text-lg text-white/75">{s?.hero_subheading || 'I build websites and web apps, and keep Windows laptops and office systems running for businesses and individuals across Ghana.'}</p>
             <div className="hero-in d2 mt-8 flex flex-wrap gap-3">
-              <a href={waLink(s?.phone, 'Hello, I would like to start a project.')} target="_blank" rel="noopener noreferrer" className="shine inline-flex items-center justify-center rounded-xl bg-lime px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97]">Start a project</a>
+              <a href={waLink(s?.phone, 'Hello, I would like to start a project.')} target="_blank" rel="noopener noreferrer" className="shine inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97]">Start a project</a>
               <Link href="/projects" className="shine inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-semibold backdrop-blur-md transition hover:bg-white/15 active:scale-[.97]">See my work</Link>
             </div>
             <ul className="hero-in d3 mt-10 flex flex-wrap gap-2" aria-label="Technologies">
               {['React', 'Next.js', 'Laravel', 'Python', 'Tailwind CSS'].map((t) => <li key={t} className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/80">{t}</li>)}
             </ul>
-            {avg && <p className="hero-in d3 mt-5 text-sm text-white/70"><span className="font-semibold text-lime">{avg} out of 5</span> from {reviews.length} client review{reviews.length > 1 ? 's' : ''}</p>}
+            {avg && <p className="hero-in d3 mt-5 text-sm text-white/70"><span className="font-semibold text-accent">{avg} out of 5</span> from {reviews.length} client review{reviews.length > 1 ? 's' : ''}</p>}
           </div>
 
           <div className="hero-in d2">
@@ -54,11 +55,11 @@ export default async function Home() {
                   <p className="font-display text-xl font-semibold">Your tech, sorted</p>
                   <span className="text-xs text-white/60">{services.length} services</span>
                 </div>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/15"><div className="bar-fill h-full rounded-full bg-lime" /></div>
+                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/15"><div className="bar-fill h-full rounded-full bg-accent" /></div>
                 <ul className="mt-5 space-y-2.5">
                   {['Windows 11 installed', 'Office set up and activated', 'Drivers updated, laptop running fast', 'Website live on your own domain'].map((t, i) => (
                     <li key={t} className="check-row flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm" style={{ animationDelay: `${0.9 + i * 0.8}s` }}>
-                      <span className="check-dot flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime text-ink">
+                      <span className="check-dot flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-ink">
                         <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" style={{ animationDelay: `${0.9 + i * 0.8}s` }} /></svg>
                       </span>{t}
                     </li>
@@ -95,14 +96,14 @@ export default async function Home() {
 
       <section className="mx-auto mt-24 max-w-6xl px-5">
         <Head n="03 — Client reviews" t="What clients say" href="/reviews" />
-        {reviews?.length ? <div className="mt-8 grid gap-6 md:grid-cols-3">{reviews.slice(0, 3).map((r) => <ReviewCard key={r.id} r={r} />)}</div> : <p className="mt-8 text-muted">Reviews from my first clients will show here.</p>}
+        {reviews?.length ? <div className="mt-10"><ReviewCarousel reviews={reviews.slice(0, 10)} /></div> : <p className="mt-8 text-muted">Reviews from my first clients will show here.</p>}
       </section>
 
       <section className="mx-auto mt-24 max-w-6xl px-5">
-        <div className="card reveal bg-brand text-white" style={{ background: '#0F3D2A' }}>
+        <div className="card reveal bg-brand text-white" style={{ background: '#474150' }}>
           <h2 className="text-3xl font-semibold">Need your laptop or website sorted?</h2>
           <p className="mt-2 text-white/70">Message me on WhatsApp and let's get it done.</p>
-          <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-5 inline-flex rounded-lg bg-lime px-5 py-3 text-sm font-semibold text-ink">Chat on WhatsApp</a>
+          <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-5 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-ink">Chat on WhatsApp</a>
         </div>
       </section>
     </>

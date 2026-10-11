@@ -40,11 +40,11 @@ export default function Navbar({ name, logo, wa }) {
             {logo
               ? <img src={logo} alt="" className="h-11 w-11 shrink-0 rounded-xl bg-black object-contain p-1 transition-transform duration-300 hover:-rotate-6 hover:scale-110" />
               : <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20 transition-transform duration-300 hover:-rotate-6 hover:scale-110">
-                  <svg viewBox="0 0 64 64" className="h-7 w-7"><path d="M16 38 32 22l16 16" fill="none" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /><path d="M16 52 32 36l16 16" fill="none" stroke="#C8F135" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <svg viewBox="0 0 64 64" className="h-7 w-7"><path d="M16 38 32 22l16 16" fill="none" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /><path d="M16 52 32 36l16 16" fill="none" stroke="#FFBB00" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>}
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-display text-base font-semibold sm:text-lg">{name}</span>
-              <span className="block truncate text-[11px] text-lime sm:text-xs">Everything Tech, One Plug.</span>
+              <span className="block truncate text-[11px] text-accent sm:text-xs">Everything Tech, One Plug.</span>
             </span>
           </Link>
 
@@ -58,7 +58,7 @@ export default function Navbar({ name, logo, wa }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="shine hidden rounded-xl bg-lime px-4 py-2.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97] sm:inline-flex">Hire me</a>
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="shine hidden rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97] sm:inline-flex">Hire me</a>
             <button type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(!open)}
               className="rounded-xl border border-white/20 bg-white/10 p-2.5 text-white lg:hidden">
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">{open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}</svg>
@@ -71,7 +71,7 @@ export default function Navbar({ name, logo, wa }) {
             {links.map(([h, l, icon]) => (
               <Link key={h} href={h} className={`flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white ${isOn(h) ? 'bg-white/15' : 'hover:bg-white/10'}`}><Icon>{icon}</Icon>{l}</Link>
             ))}
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 flex w-full items-center justify-center rounded-xl bg-lime px-4 py-3 text-sm font-semibold text-ink">Hire me on WhatsApp</a>
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-ink">Hire me on WhatsApp</a>
           </nav>
         )}
       </div>
