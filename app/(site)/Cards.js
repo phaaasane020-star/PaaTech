@@ -4,10 +4,10 @@ import Phone, { Laptop } from './PhoneShowcase'
 
 export function PageHead({ label, title, text }) {
   return (
-    <div className="hero-in mx-auto max-w-6xl px-5 pt-32 md:pt-40">
-      <p className="label">{label}</p>
-      <h1 className="text-4xl font-semibold md:text-6xl">{title}</h1>
-      {text && <p className="mt-4 max-w-xl text-lg text-muted">{text}</p>}
+    <div className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
+      <p className="label hero-in">{label}</p>
+      <h1 className="hero-in d1 text-4xl font-semibold md:text-6xl">{title}</h1>
+      {text && <p className="hero-in d2 mt-4 max-w-xl text-lg text-muted">{text}</p>}
     </div>
   )
 }

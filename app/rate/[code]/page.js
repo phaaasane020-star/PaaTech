@@ -41,7 +41,7 @@ export default function Rate() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-lg items-center px-5 py-10">
-      <div className="card w-full">
+      <div className="card hero-in w-full">
         <p className="font-display text-lg font-semibold">Paa Asane Technologies</p>
         {state !== 'pending' ? <p className="mt-6 text-muted">{msg}</p> : (
           <form onSubmit={submit} className="mt-6 space-y-5">
@@ -52,7 +52,7 @@ export default function Rate() {
             <div className="flex gap-1 text-4xl">
               {[1, 2, 3, 4, 5].map((n) => (
                 <button type="button" key={n} onClick={() => setRating(n)} aria-label={`${n} stars`}
-                  className={n <= rating ? 'text-[#526600]' : 'text-line'}>★</button>
+                  className={`transition-transform duration-200 hover:scale-125 active:scale-90 ${n <= rating ? 'scale-110 text-[#526600]' : 'text-line'}`}>★</button>
               ))}
             </div>
             <div><label className="label">Your name</label><input className="input" value={name} onChange={(e) => setName(e.target.value)} /></div>

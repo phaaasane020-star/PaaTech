@@ -17,7 +17,7 @@ export default function ContactForm() {
     setState(error ? 'error' : 'sent')
   }
 
-  if (state === 'sent') return <div className="card"><p className="font-semibold">Thank you! Your message has been sent. ✓</p><p className="mt-1 text-sm text-muted">I will get back to you soon.</p></div>
+  if (state === 'sent') return <div className="card hero-in"><span className="check-dot flex h-10 w-10 items-center justify-center rounded-full bg-lime text-ink"><svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg></span><p className="mt-3 font-semibold">Thank you! Your message has been sent.</p><p className="mt-1 text-sm text-muted">I will get back to you soon.</p></div>
   return (
     <form onSubmit={submit} className="card space-y-4">
       <input tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" name="website" value={hp} onChange={(e) => setHp(e.target.value)} />

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { supabase, waLink } from '@/lib/supabase'
 import { PageHead } from '../Cards'
+import CountUp from '../CountUp'
 
 export const revalidate = 30
 export const metadata = { title: 'About', description: 'Meet the person behind Paa Asane Technologies: a tech specialist and web engineer in Ghana helping with Windows, laptops and websites.' }
@@ -58,7 +59,7 @@ export default async function About() {
 
       <section className="mx-auto mt-20 grid max-w-6xl gap-5 px-5 sm:[grid-template-columns:repeat(var(--n),minmax(0,1fr))]" style={{ '--n': stats.length }}>
         {stats.map(([v, l]) => (
-          <div key={l} className="card lift reveal"><p className="font-display text-4xl font-semibold">{v}</p><p className="mt-1 text-sm text-muted">{l}</p></div>
+          <div key={l} className="card lift reveal"><p className="font-display text-4xl font-semibold"><CountUp value={v} /></p><p className="mt-1 text-sm text-muted">{l}</p></div>
         ))}
       </section>
 

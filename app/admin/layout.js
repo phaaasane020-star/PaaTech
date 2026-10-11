@@ -31,7 +31,7 @@ export default function AdminLayout({ children }) {
           <button className="rounded-lg px-3 py-2 text-left text-sm hover:bg-white/10" onClick={async () => { await supabase.auth.signOut(); router.replace('/admin/login') }}>Log out</button>
         </nav>
       </aside>
-      <div className="flex-1 p-5 md:p-10">{children}</div>
+      <div className="admin-fx flex-1 p-5 md:p-10">{children}</div>
     </div>
   )
 }

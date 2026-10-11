@@ -6,6 +6,8 @@ import { harambee } from '@/lib/featured'
 
 export const revalidate = 30
 
+const tech = ['React', 'Next.js', 'Laravel', 'Python', 'Tailwind CSS', 'Supabase', 'Windows 11', 'Microsoft Office', 'Troubleshooting', 'WhatsApp support']
+
 const Head = ({ n, t, href }) => (
   <div className="flex items-end justify-between gap-4">
     <div><p className="label">{n}</p><h2 className="text-3xl font-semibold md:text-4xl">{t}</h2></div>
@@ -24,13 +26,15 @@ export default async function Home() {
     <>
       <section className="relative overflow-hidden rounded-b-[2.5rem] text-white"
         style={{ background: 'radial-gradient(900px 480px at 88% 8%, rgba(200,241,53,.2), transparent 60%), radial-gradient(700px 480px at 0% 100%, rgba(27,90,63,.85), transparent 60%), linear-gradient(160deg, #0F3D2A, #07231A)' }}>
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-36 md:grid-cols-[1.15fr_1fr] md:pb-28 md:pt-44">
+        <div className="glow-a" aria-hidden="true" /><div className="glow-b" aria-hidden="true" />
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-36 md:grid-cols-[1.15fr_1fr] md:pb-28 md:pt-44">
           <div>
             <h1 className="hero-in text-4xl font-semibold leading-[1.08] sm:text-5xl md:text-6xl">Full-stack web developer and IT systems specialist</h1>
+            <p className="hero-in d1 mt-5 text-xl text-white/90">I help with <span className="word-rotor" aria-hidden="true"><span className="word-track"><span>websites</span><span>web apps</span><span>Windows setups</span><span>laptop repairs</span><span>websites</span></span></span><span className="sr-only">websites, web apps, Windows setups and laptop repairs</span></p>
             <p className="hero-in d1 mt-6 max-w-xl text-lg text-white/75">{s?.hero_subheading || 'I build websites and web apps, and keep Windows laptops and office systems running for businesses and individuals across Ghana.'}</p>
             <div className="hero-in d2 mt-8 flex flex-wrap gap-3">
-              <a href={waLink(s?.phone, 'Hello, I would like to start a project.')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-lime px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97]">Start a project</a>
-              <Link href="/projects" className="inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-semibold backdrop-blur-md transition hover:bg-white/15 active:scale-[.97]">See my work</Link>
+              <a href={waLink(s?.phone, 'Hello, I would like to start a project.')} target="_blank" rel="noopener noreferrer" className="shine inline-flex items-center justify-center rounded-xl bg-lime px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 active:scale-[.97]">Start a project</a>
+              <Link href="/projects" className="shine inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-semibold backdrop-blur-md transition hover:bg-white/15 active:scale-[.97]">See my work</Link>
             </div>
             <ul className="hero-in d3 mt-10 flex flex-wrap gap-2" aria-label="Technologies">
               {['React', 'Next.js', 'Laravel', 'Python', 'Tailwind CSS'].map((t) => <li key={t} className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/80">{t}</li>)}
@@ -70,6 +74,12 @@ export default async function Home() {
       <div className="marquee mt-16 border-y border-white/60 py-4">
         <div className="marquee-track">
           {[...services, ...services].map((v, i) => <span key={i} className="tag whitespace-nowrap px-4 py-2 text-sm">{v.title}</span>)}
+        </div>
+      </div>
+
+      <div className="marquee border-b border-white/60 py-4">
+        <div className="marquee-track rev">
+          {[...tech, ...tech].map((t, i) => <span key={i} className="tag whitespace-nowrap px-4 py-2 text-sm">{t}</span>)}
         </div>
       </div>
 
