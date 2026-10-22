@@ -33,9 +33,9 @@ export default async function About() {
 
   return (
     <>
-      <PageHead label="About" title="About me" text="Who I am and how I work." />
+      <PageHead label="About" title="About me" text="Who I am, what I do and how I work." />
 
-      <section className="mx-auto mt-10 grid max-w-6xl items-start gap-12 px-5 md:grid-cols-[340px_1fr]">
+      <section className="mx-auto mt-16 grid max-w-6xl items-start gap-12 px-5 md:grid-cols-[340px_1fr]">
         <div className="reveal relative">
           <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-brand">
             {s?.about_photo_url

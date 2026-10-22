@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-const GOLD = '#F5B301'
+const GOLD = '#C49A3A'
 
 // Testimonial carousel: autoplay with progress bar, arrows, dots, swipe, pause on hover.
 export default function ReviewCarousel({ reviews }) {
@@ -33,7 +33,7 @@ export default function ReviewCarousel({ reviews }) {
             </span>
             <div className="mt-5 flex justify-center gap-1" role="img" aria-label={`${r.rating} out of 5 stars`}>
               {[1, 2, 3, 4, 5].map((s) => (
-                <svg key={s} viewBox="0 0 24 24" className="t-star" fill="currentColor" style={{ animationDelay: `${s * 90}ms`, color: s <= r.rating ? GOLD : '#D4D2E0' }}><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1z" /></svg>
+                <svg key={s} viewBox="0 0 24 24" className="t-star" fill="currentColor" style={{ animationDelay: `${s * 90}ms`, color: s <= r.rating ? GOLD : '#E6E1D6' }}><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1z" /></svg>
               ))}
             </div>
             <blockquote className="mt-6 text-lg italic leading-relaxed text-ink sm:text-xl">“{r.comment || 'Great service, highly recommended!'}”</blockquote>

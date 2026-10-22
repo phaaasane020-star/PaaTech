@@ -52,7 +52,7 @@ export default function Rate() {
             <div className="flex gap-1 text-4xl">
               {[1, 2, 3, 4, 5].map((n) => (
                 <button type="button" key={n} onClick={() => setRating(n)} aria-label={`${n} stars`}
-                  className={`transition-transform duration-200 hover:scale-125 active:scale-90 ${n <= rating ? 'scale-110 text-[#B47F00]' : 'text-line'}`}>★</button>
+                  className={`transition-transform duration-200 hover:scale-125 active:scale-90 ${n <= rating ? 'scale-110 text-accent-deep' : 'text-line'}`}>★</button>
               ))}
             </div>
             <div><label className="label">Your name</label><input className="input" value={name} onChange={(e) => setName(e.target.value)} /></div>

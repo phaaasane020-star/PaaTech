@@ -12,12 +12,12 @@ export default async function Reviews() {
   return (
     <>
       <PageHead label="Reviews" title="What clients say" text="Real ratings from people I have worked with." />
-      <section className="mx-auto mt-10 max-w-6xl px-5">
+      <section className="mx-auto mt-16 max-w-6xl px-5">
         {n ? (
           <>
             <div className="card mb-6 flex items-center gap-6 md:w-fit">
               <p className="font-display text-5xl font-semibold">{avg}</p>
-              <div><p style={{ color: '#B47F00' }}>{'★'.repeat(Math.round(avg))}{'☆'.repeat(5 - Math.round(avg))}</p><p className="text-sm text-muted">{n} review{n > 1 ? 's' : ''}</p></div>
+              <div><p className="text-accent-deep">{'★'.repeat(Math.round(avg))}{'☆'.repeat(5 - Math.round(avg))}</p><p className="text-sm text-muted">{n} review{n > 1 ? 's' : ''}</p></div>
             </div>
             <div className="my-12"><ReviewCarousel reviews={reviews.slice(0, 10)} /></div>
             <h2 className="mb-6 text-2xl font-semibold">All reviews</h2>

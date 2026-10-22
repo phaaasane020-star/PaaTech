@@ -2,13 +2,16 @@ import { I, services } from '@/lib/services'
 import { waLink, stars } from '@/lib/supabase'
 import Phone, { Laptop } from './PhoneShowcase'
 
+// Simple hero at the top of every inner page: dark green band, small label, title and one line of text.
 export function PageHead({ label, title, text }) {
   return (
-    <div className="mx-auto max-w-6xl px-5 pt-32 md:pt-40">
-      <p className="label hero-in">{label}</p>
-      <h1 className="hero-in d1 text-4xl font-semibold md:text-6xl">{title}</h1>
-      {text && <p className="hero-in d2 mt-4 max-w-xl text-lg text-muted">{text}</p>}
-    </div>
+    <section className="bg-brand text-white">
+      <div className="mx-auto max-w-6xl px-5 pb-14 pt-32 md:pb-20 md:pt-40">
+        <p className="hero-in text-xs font-semibold uppercase tracking-[.16em] text-accent">{label}</p>
+        <h1 className="hero-in d1 mt-3 text-4xl font-bold leading-[1.05] md:text-6xl">{title}</h1>
+        {text && <p className="hero-in d2 mt-4 max-w-xl text-lg text-white/70">{text}</p>}
+      </div>
+    </section>
   )
 }
 
@@ -47,7 +50,7 @@ export const ProjectCard = ({ p }) => (
 
 export const ReviewCard = ({ r }) => (
   <div className="card lift reveal">
-    <p style={{ color: '#B47F00' }}>{stars(r.rating)}</p>
+    <p className="text-accent-deep">{stars(r.rating)}</p>
     <p className="mt-3 text-sm">{r.comment}</p>
     <p className="mt-4 text-sm font-semibold">{r.client_name}</p>
     <p className="text-xs text-muted">{r.service_name}</p>

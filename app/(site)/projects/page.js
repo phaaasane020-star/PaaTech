@@ -10,8 +10,8 @@ export default async function Projects() {
   const all = [harambee, ...(data || [])]
   return (
     <>
-      <PageHead label="My work" title="Selected work" text="Websites, setups and fixes I have completed for clients." />
-      <section className="mx-auto mt-10 max-w-6xl space-y-8 px-5">
+      <PageHead label="My work" title="Selected work" text="Websites, setups and fixes completed for clients across Ghana." />
+      <section className="mx-auto mt-16 max-w-6xl space-y-8 px-5">
         {all.map((p, i) => <ProjectShowcase key={p.id} p={p} flip={i % 2 === 1} />)}
       </section>
     </>
