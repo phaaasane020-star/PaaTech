@@ -18,8 +18,8 @@ const Icon = ({ children }) => (
 // Full-width header: your name as a wordmark on the left, text links, and a "Hire me" button.
 // Phones keep the original dropdown menu (icon + label per page, WhatsApp button at the bottom).
 // Transparent over the dark home hero; turns solid near-black once you scroll or leave the home page.
-// The browser-tab icon (favicon) is set separately in app/layout.js and is not shown here.
-export default function Navbar({ name, wa }) {
+// Your logo (uploaded in Admin → Settings → Website logo) shows beside your name; the tab icon is set separately in app/layout.js.
+export default function Navbar({ name, logo, wa }) {
   const path = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -38,8 +38,9 @@ export default function Navbar({ name, wa }) {
   return (
     <header className={`nav-in fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${open ? 'border-white/10 bg-ink' : solid ? 'border-white/10 bg-ink/95 backdrop-blur-md' : 'border-transparent bg-transparent'}`}>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[72px]">
-        <Link href="/" className="min-w-0 truncate font-display text-[17px] font-bold tracking-tight text-white sm:text-lg" aria-label={`${name} home`}>
-          {name}<span className="text-accent">.</span>
+        <Link href="/" className="flex min-w-0 items-center gap-2.5 text-white" aria-label={`${name} home`}>
+          {logo && <img src={logo} alt="" className="h-9 w-9 shrink-0 rounded-lg object-contain md:h-10 md:w-10" />}
+          <span className="min-w-0 truncate font-display text-[17px] font-bold tracking-tight sm:text-lg">{name}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">

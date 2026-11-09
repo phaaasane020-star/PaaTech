@@ -76,7 +76,7 @@ export default function Settings() {
       <h2 className="mt-8 text-xl font-semibold">Branding</h2>
       <div className="mt-4 grid gap-5 md:grid-cols-2">
         <Upload field="favicon_url" tab title="Browser tab icon" help="The small image in the browser tab and on iPhone home screens. Use a square image (512×512 PNG works best)." />
-        <Upload field="logo_url" title="Website logo" help="Used for Google search results. Transparent PNG or SVG works best." />
+        <Upload field="logo_url" title="Website logo" help="Shown next to your business name at the top of every page, and used for Google search results. A square, transparent PNG or SVG works best." />
         <Upload field="about_photo_url" title="Your photo (About page)" help="A clear, professional portrait works best (4:5 portrait)." />
       </div>
       <h2 className="mt-10 text-xl font-semibold">Business info</h2>

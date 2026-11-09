@@ -21,7 +21,7 @@ export default async function SiteLayout({ children }) {
   }
   return (
     <>
-      <Navbar name={name} wa={wa} />
+      <Navbar name={name} logo={s?.logo_url} wa={wa} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
       <RevealObserver />
       <MotionFX />
