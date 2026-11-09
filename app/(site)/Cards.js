@@ -28,7 +28,7 @@ export function ServiceCards({ phone, limit }) {
           </div>
           <h3 className="mt-5 text-xl font-semibold">{v.title}</h3>
           <p className={`mt-2 flex-1 text-sm md:max-w-2xl ${v.featured ? 'text-white/75' : 'text-muted'}`}>{v.text}</p>
-          <div className="mt-4 flex flex-wrap gap-2">{v.tags.map((t) => <span key={t} className={`tag ${v.featured ? 'border-white/25 text-white/80' : ''}`}>{t}</span>)}</div>
+          <div className="mt-4 flex flex-wrap gap-2">{v.tags.map((t) => <span key={t} className={`tag ${v.featured ? 'border-white/20 bg-white/[.06] text-white/85' : ''}`}>{t}</span>)}</div>
           <a href={waLink(phone, `Hello, I need help with: ${v.title}`)} target="_blank" rel="noopener noreferrer" className={`mt-5 text-sm font-semibold ${v.featured ? 'text-accent' : 'text-brand'}`}>{v.featured ? 'Discuss your project →' : 'Request this service →'}</a>
         </article>
       ))}
