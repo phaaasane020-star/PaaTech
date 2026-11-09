@@ -13,10 +13,10 @@ export default async function Contact() {
       <section className="mx-auto mt-16 grid max-w-6xl gap-6 px-5 md:grid-cols-2">
         <div className="card border-ink bg-ink text-white">
           <p className="label text-white/60">WhatsApp</p>
-          <p className="text-2xl font-semibold">{s?.phone}</p>
+          <p className="break-words text-2xl font-semibold">{s?.phone}</p>
           <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-4 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-ink">Chat on WhatsApp</a>
           <p className="label mt-8 text-white/60">Email</p>
-          <a href={`mailto:${s?.email}`} className="font-semibold">{s?.email}</a>
+          <a href={`mailto:${s?.email}`} className="break-all font-semibold">{s?.email}</a>
         </div>
         <ContactForm />
       </section>

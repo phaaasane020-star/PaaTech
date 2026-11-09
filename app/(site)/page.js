@@ -13,7 +13,7 @@ const tech = ['React', 'Next.js', 'Laravel', 'Python', 'Tailwind CSS', 'Supabase
 const Head = ({ n, t, href }) => (
   <div className="flex items-end justify-between gap-4">
     <div><p className="label">{n}</p><h2 className="text-3xl font-semibold md:text-4xl">{t}</h2></div>
-    <Link href={href} className="text-sm font-semibold text-brand">View all →</Link>
+    <Link href={href} className="shrink-0 whitespace-nowrap text-sm font-semibold text-brand">View all →</Link>
   </div>
 )
 
@@ -40,14 +40,14 @@ export default async function Home() {
               Available for new projects
             </p>
 
-            <h1 className="hero-in d1 mt-6 text-[2.75rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="hero-in d1 mt-6 text-[2.35rem] font-bold leading-[1.04] min-[400px]:text-[2.6rem] sm:text-6xl lg:text-[4.25rem]">
               Full-Stack Web<br />Development &amp;<br />
               <span className="text-accent">IT Solutions</span>
             </h1>
 
             <p className="hero-in d2 mt-6 max-w-md text-lg leading-relaxed text-white/70">{s?.hero_subheading || 'I build websites and web apps, and keep Windows laptops and office systems running for businesses and individuals across Ghana.'}</p>
 
-            <div className="hero-in d3 mt-9 flex flex-wrap gap-3">
+            <div className="hero-in d3 mt-9 flex flex-wrap gap-3 max-sm:[&>*]:flex-1 max-sm:[&>*]:justify-center">
               <a href={waLink(s?.phone, 'Hello, I would like to start a project.')} target="_blank" rel="noopener noreferrer"
                 className="shine group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-accent active:scale-[.97]">
                 Start a project
@@ -56,15 +56,15 @@ export default async function Home() {
               <Link href="/projects" className="inline-flex items-center rounded-xl border border-white/20 bg-black/40 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 active:scale-[.97]">View my work</Link>
             </div>
 
-            <dl className="hero-in d4 mt-12 grid max-w-md grid-cols-3 divide-x divide-white/10 border-t border-white/10 pt-6">
+            <dl className="hero-in d4 mt-10 grid max-w-md grid-cols-3 sm:mt-12 divide-x divide-white/10 border-t border-white/10 pt-6">
               {[
                 avg ? [`${avg}/5`, `${reviews.length} client review${reviews.length > 1 ? 's' : ''}`] : ['Web + IT', 'One reliable plug'],
                 [`${services.length}+`, 'Services offered'],
                 ['Ghana', 'Nationwide support']
               ].map(([v, l], i) => (
-                <div key={l} className={i ? 'pl-4 sm:pl-5' : 'pr-4'}>
+                <div key={l} className={`min-w-0 ${i ? 'pl-3 sm:pl-5' : 'pr-3 sm:pr-4'}`}>
                   <dt className="sr-only">{l}</dt>
-                  <dd className="font-display text-2xl font-semibold">{v}</dd>
+                  <dd className="font-display text-xl font-semibold sm:text-2xl">{v}</dd>
                   <dd className="mt-1 text-xs text-white/55">{l}</dd>
                 </div>
               ))}

@@ -21,7 +21,7 @@ export default async function SiteLayout({ children }) {
   }
   return (
     <>
-      <Navbar name={name} logo={s?.logo_url} wa={wa} />
+      <Navbar name={name} wa={wa} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
       <RevealObserver />
       <MotionFX />
@@ -32,7 +32,7 @@ export default async function SiteLayout({ children }) {
           <div className="text-sm">
             <p className="label text-white/60">Contact</p>
             <a className="block py-1" href={wa}>WhatsApp: {s?.phone}</a>
-            <a className="block py-1" href={`mailto:${s?.email}`}>{s?.email}</a>
+            <a className="block break-all py-1" href={`mailto:${s?.email}`}>{s?.email}</a>
           </div>
           <div className="text-sm">
             <p className="label text-white/60">Pages</p>

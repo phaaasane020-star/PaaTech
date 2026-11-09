@@ -21,8 +21,8 @@ export default function ContactForm() {
   return (
     <form onSubmit={submit} className="card space-y-4">
       <input tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" name="website" value={hp} onChange={(e) => setHp(e.target.value)} />
-      <div><label className="label">Name</label><input className="input" maxLength={100} value={f.name} onChange={set('name')} required /></div>
-      <div><label className="label">Phone</label><input className="input" maxLength={30} value={f.phone} onChange={set('phone')} /></div>
+      <div><label className="label">Name</label><input className="input" autoComplete="name" maxLength={100} value={f.name} onChange={set('name')} required /></div>
+      <div><label className="label">Phone</label><input className="input" type="tel" inputMode="tel" autoComplete="tel" maxLength={30} value={f.phone} onChange={set('phone')} /></div>
       <div><label className="label">Service needed</label>
         <select className="input" value={f.service} onChange={set('service')}><option value="">Select a service</option>{services.map((v) => <option key={v.title}>{v.title}</option>)}<option>Other</option></select></div>
       <div><label className="label">Message</label><textarea className="input" rows={4} maxLength={2000} value={f.message} onChange={set('message')} required /></div>
