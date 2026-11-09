@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from 'react'
 
 // 3D robot for the home hero, shown with Google's free <model-viewer> (no watermark).
 // Model: "RobotExpressive" by Tomás Laulhé, CC0 1.0 (public domain) — file lives at /public/models/robot.glb.
-// On load: the yellow body is re-tinted to graphite to suit the dark hero, the robot waves once, then idles.
-const GRAPHITE = [0.07, 0.09, 0.08, 1]
+// On load: the whole robot is re-coloured black (glossy body, matte joints), it waves, then idles.
+const GLOSS_BLACK = [0.03, 0.03, 0.03, 1]
+const MATTE_BLACK = [0.01, 0.01, 0.01, 1]
 
 export default function HeroRobot({ className = '' }) {
   const ref = useRef(null)
@@ -16,15 +17,15 @@ export default function HeroRobot({ className = '' }) {
     if (!el) return
 
     const onLoad = () => {
-      // re-tint the bright yellow parts to graphite with a soft metallic finish
+      // make the whole robot black: bright parts become glossy black (light still shows the shape),
+      // darker parts become matte black so the joints read as separate pieces
       for (const m of el.model?.materials || []) {
         const pbr = m.pbrMetallicRoughness
         const [r, g, b] = pbr.baseColorFactor
-        if (r > 0.5 && g > 0.35 && b < 0.35) {
-          pbr.setBaseColorFactor(GRAPHITE)
-          pbr.setMetallicFactor(0.55)
-          pbr.setRoughnessFactor(0.35)
-        }
+        const bright = (r + g + b) / 3 > 0.25
+        pbr.setBaseColorFactor(bright ? GLOSS_BLACK : MATTE_BLACK)
+        pbr.setMetallicFactor(bright ? 0.7 : 0.2)
+        pbr.setRoughnessFactor(bright ? 0.22 : 0.6)
       }
       const names = el.availableAnimations || []
       if (names.includes('Wave')) {
@@ -64,7 +65,7 @@ export default function HeroRobot({ className = '' }) {
       camera-orbit="15deg 80deg auto"
       field-of-view="28deg"
       environment-image="neutral"
-      exposure="1.1"
+      exposure="1.35"
       shadow-intensity="1"
       shadow-softness="0.8"
       loading="eager"
