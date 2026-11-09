@@ -19,10 +19,17 @@ export default function Settings() {
     const { error } = await supabase.storage.from('media').upload(path, file, { upsert: true })
     if (error) return alert('Upload failed: ' + error.message)
     const url = supabase.storage.from('media').getPublicUrl(path).data.publicUrl
-    await supabase.from('site_settings').update({ [field]: url, updated_at: new Date().toISOString() }).eq('id', 1)
-    setS({ ...s, [field]: url }); flash('Updated ✓')
+    // check that the database actually saved the link; before, failures were hidden behind "Updated ✓"
+    const { data: saved, error: dbError } = await supabase.from('site_settings').update({ [field]: url, updated_at: new Date().toISOString() }).eq('id', 1).select(field)
+    if (dbError) return alert('The image uploaded, but saving it to your settings failed: ' + dbError.message)
+    if (!saved?.length) return alert('The image uploaded, but your settings were not changed. Make sure you are logged in as the admin, then try again.')
+    setS({ ...s, [field]: url }); flash('Updated ✓ (live site refreshes within 30 seconds)')
   }
-  const clear = async (field) => { await supabase.from('site_settings').update({ [field]: '' }).eq('id', 1); setS({ ...s, [field]: '' }); flash('Removed') }
+  const clear = async (field) => {
+    const { error } = await supabase.from('site_settings').update({ [field]: '' }).eq('id', 1)
+    if (error) return alert('Could not remove it: ' + error.message)
+    setS({ ...s, [field]: '' }); flash('Removed')
+  }
 
   async function save(e) {
     e.preventDefault()
@@ -40,7 +47,7 @@ export default function Settings() {
         <div className="flex h-24 items-center justify-center rounded-lg bg-ink">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-white/60">No image</span>}</div>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <input type="file" accept="image/png,image/svg+xml,image/jpeg,image/x-icon" className="text-sm" onChange={(e) => upload(field, e.target.files[0])} />
+        <input type="file" accept="image/png,image/svg+xml,image/jpeg,image/webp,image/x-icon" className="text-sm" onChange={(e) => upload(field, e.target.files[0])} />
         {s[field] && <button className="btn-ghost" onClick={() => clear(field)}>Remove</button>}
       </div>
     </div>
@@ -52,7 +59,7 @@ export default function Settings() {
       {msg && <p className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold">{msg}</p>}
       <h2 className="mt-8 text-xl font-semibold">Branding</h2>
       <div className="mt-4 grid gap-5 md:grid-cols-2">
-        <Upload field="logo_url" title="Website logo" help="Shown in the navbar. Transparent PNG or SVG works best." />
+        <Upload field="logo_url" title="Website logo" help="Used for Google search results. Transparent PNG or SVG works best." />
         <Upload field="favicon_url" title="Favicon" help="Small square icon shown in the browser tab." />
         <Upload field="about_photo_url" title="Your photo (About page)" help="A clear, professional portrait works best (4:5 portrait)." />
       </div>

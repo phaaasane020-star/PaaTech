@@ -1,8 +1,7 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 export default function MotionFX() {
-  const bar = useRef(null)
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     let raf = 0
@@ -10,8 +9,6 @@ export default function MotionFX() {
     const onScroll = () => {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => {
-        const max = root.scrollHeight - window.innerHeight
-        if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`
         root.style.setProperty('--sy', String(window.scrollY))
       })
     }
@@ -42,5 +39,5 @@ export default function MotionFX() {
       document.removeEventListener('pointerout', onOut)
     }
   }, [])
-  return <div ref={bar} className="scroll-bar" aria-hidden="true" />
+  return null
 }
