@@ -38,14 +38,30 @@ export default function Settings() {
     flash(error ? error.message : 'Saved ✓')
   }
 
-  const Upload = ({ field, title, help }) => (
+  // how the tab icon will look in a browser tab (light and dark browsers)
+  const TabPreview = ({ src }) => (
+    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {[['bg-[#DEE1E6] text-[#202124]', 'bg-white'], ['bg-[#202124] text-[#E8EAED]', 'bg-[#35363A]']].map(([bar, tab]) => (
+        <div key={bar} className={`rounded-lg px-2 pt-2 ${bar}`}>
+          <div className={`flex w-full max-w-[220px] items-center gap-2 rounded-t-lg px-3 py-2 text-xs ${tab}`}>
+            <img src={src || '/favicon.svg'} alt="" className="h-4 w-4 shrink-0 rounded-sm object-contain" />
+            <span className="truncate">{s.business_name || 'Paa Asane Technologies'}</span>
+            <span className="ml-auto opacity-60">✕</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+
+  const Upload = ({ field, title, help, tab }) => (
     <div className="card">
       <p className="font-semibold">{title}</p>
       <p className="text-xs text-muted">{help}</p>
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      {tab ? <TabPreview src={s[field]} /> : <div className="mt-4 grid grid-cols-2 gap-3">
         <div className="flex h-24 items-center justify-center rounded-lg border border-line bg-white">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-muted">No image</span>}</div>
         <div className="flex h-24 items-center justify-center rounded-lg bg-ink">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-white/60">No image</span>}</div>
-      </div>
+      </div>}
+      {tab && !s[field] && <p className="mt-2 text-xs text-muted">No icon uploaded yet, so the default arrow icon is used.</p>}
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <input type="file" accept="image/png,image/svg+xml,image/jpeg,image/webp,image/x-icon" className="text-sm" onChange={(e) => upload(field, e.target.files[0])} />
         {s[field] && <button className="btn-ghost" onClick={() => clear(field)}>Remove</button>}
@@ -59,8 +75,8 @@ export default function Settings() {
       {msg && <p className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold">{msg}</p>}
       <h2 className="mt-8 text-xl font-semibold">Branding</h2>
       <div className="mt-4 grid gap-5 md:grid-cols-2">
+        <Upload field="favicon_url" tab title="Browser tab icon" help="The small image in the browser tab and on iPhone home screens. Use a square image (512×512 PNG works best)." />
         <Upload field="logo_url" title="Website logo" help="Used for Google search results. Transparent PNG or SVG works best." />
-        <Upload field="favicon_url" title="Favicon" help="Small square icon shown in the browser tab." />
         <Upload field="about_photo_url" title="Your photo (About page)" help="A clear, professional portrait works best (4:5 portrait)." />
       </div>
       <h2 className="mt-10 text-xl font-semibold">Business info</h2>

@@ -4,14 +4,19 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
-  ['/', 'Home'],
-  ['/services', 'Services'],
-  ['/projects', 'Projects'],
-  ['/about', 'About'],
-  ['/contact', 'Contact']
+  ['/', 'Home', <path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10" />],
+  ['/services', 'Services', <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />],
+  ['/projects', 'Projects', <><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></>],
+  ['/about', 'About', <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>],
+  ['/contact', 'Contact', <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>]
 ]
 
+const Icon = ({ children }) => (
+  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{children}</svg>
+)
+
 // Full-width header: your name as a wordmark on the left, text links, and a "Hire me" button.
+// Phones keep the original dropdown menu (icon + label per page, WhatsApp button at the bottom).
 // Transparent over the dark home hero; turns solid near-black once you scroll or leave the home page.
 // The browser-tab icon (favicon) is set separately in app/layout.js and is not shown here.
 export default function Navbar({ name, wa }) {
@@ -26,17 +31,12 @@ export default function Navbar({ name, wa }) {
     return () => window.removeEventListener('scroll', on)
   }, [])
   useEffect(() => setOpen(false), [path])
-  // stop the page scrolling behind the open phone menu
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
 
   const solid = scrolled || path !== '/' || open
   const isOn = (h) => (h === '/' ? path === '/' : path.startsWith(h))
 
   return (
-    <header className={`nav-in fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${solid ? 'border-white/10 bg-ink/95 backdrop-blur-md' : 'border-transparent bg-transparent'}`}>
+    <header className={`nav-in fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${open ? 'border-white/10 bg-ink' : solid ? 'border-white/10 bg-ink/95 backdrop-blur-md' : 'border-transparent bg-transparent'}`}>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[72px]">
         <Link href="/" className="min-w-0 truncate font-display text-[17px] font-bold tracking-tight text-white sm:text-lg" aria-label={`${name} home`}>
           {name}<span className="text-accent">.</span>
@@ -59,21 +59,19 @@ export default function Navbar({ name, wa }) {
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
           </a>
           <button type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}
-            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 lg:hidden">
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">{open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 8h16M4 16h16" />}</svg>
+            className="rounded-xl border border-white/20 bg-white/10 p-2.5 text-white lg:hidden">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">{open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}</svg>
           </button>
         </div>
       </div>
 
       {open && (
-        <nav id="mobile-menu" aria-label="Mobile" className="hero-in flex h-[calc(100svh-4rem)] flex-col border-t border-white/10 bg-ink px-5 pb-8 pt-4 lg:hidden">
-          {links.map(([h, l]) => (
+        <nav id="mobile-menu" aria-label="Mobile" className="mx-auto max-w-6xl border-t border-white/15 p-3 lg:hidden">
+          {links.map(([h, l, icon]) => (
             <Link key={h} href={h} aria-current={isOn(h) ? 'page' : undefined}
-              className={`flex items-center justify-between border-b border-white/10 py-4 font-display text-2xl font-semibold ${isOn(h) ? 'text-accent' : 'text-white'}`}>
-              {l}<span aria-hidden="true" className="text-base text-white/30">→</span>
-            </Link>
+              className={`flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white ${isOn(h) ? 'bg-white/15' : 'hover:bg-white/10'}`}><Icon>{icon}</Icon>{l}</Link>
           ))}
-          <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-auto flex w-full items-center justify-center rounded-lg bg-accent px-4 py-4 text-base font-semibold text-ink">Hire me on WhatsApp</a>
+          <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-ink">Hire me on WhatsApp</a>
         </nav>
       )}
     </header>

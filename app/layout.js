@@ -16,7 +16,11 @@ export async function generateMetadata() {
     metadataBase: new URL(site),
     title: { default: `${name} | Windows, laptop repair & web development in Ghana`, template: `%s | ${name}` },
     description,
-    icons: { icon: s?.favicon_url ? `${s.favicon_url}?v=${encodeURIComponent(s.updated_at || '')}` : '/favicon.svg' },
+    // browser-tab icon: the one uploaded in Admin → Settings, or the default arrow icon (public/favicon.svg) if none is uploaded
+    icons: (() => {
+      const url = s?.favicon_url ? `${s.favicon_url}?v=${encodeURIComponent(s.updated_at || '')}` : '/favicon.svg'
+      return { icon: url, shortcut: url, apple: url }
+    })(),
     openGraph: { title: name, description, siteName: name, type: 'website', locale: 'en_GH', images: s?.logo_url ? [s.logo_url] : undefined },
     twitter: { card: 'summary_large_image', title: name, description }
   }
