@@ -14,7 +14,7 @@ export default async function Contact() {
         <div className="card border-ink bg-ink text-white">
           <p className="label text-white/60">WhatsApp</p>
           <p className="break-words text-2xl font-semibold">{s?.phone}</p>
-          <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-4 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-ink">Chat on WhatsApp</a>
+          <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-4 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white">Chat on WhatsApp</a>
           <p className="label mt-8 text-white/60">Email</p>
           <a href={`mailto:${s?.email}`} className="break-all font-semibold">{s?.email}</a>
         </div>

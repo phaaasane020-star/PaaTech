@@ -95,13 +95,13 @@ body { overflow-x: clip; }
 
 .input:focus { box-shadow: 0 0 0 4px rgba(84, 101, 255, .2); }
 footer a.block { transition: transform .2s ease, color .2s ease; }
-footer a.block:hover { transform: translateX(6px); color: #00FFD4; }
+footer a.block:hover { transform: translateX(6px); color: #fff; }
 
 @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(84, 101, 255, .55); } 70% { box-shadow: 0 0 0 18px rgba(84, 101, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(84, 101, 255, 0); } }
 .fab-pulse { animation: pulseRing 2.4s ease-out infinite; }
 
 @keyframes rotor { 0%, 20% { transform: translateY(0); } 25%, 45% { transform: translateY(-1.7em); } 50%, 70% { transform: translateY(-3.4em); } 75%, 95% { transform: translateY(-5.1em); } 100% { transform: translateY(-6.8em); } }
-.word-rotor { display: inline-block; height: 1.7em; overflow: hidden; vertical-align: bottom; color: #00FFD4; font-weight: 600; }
+.word-rotor { display: inline-block; height: 1.7em; overflow: hidden; vertical-align: bottom; color: #5465FF; font-weight: 600; }
 .word-track { display: block; animation: rotor 10s cubic-bezier(.7, 0, .2, 1) infinite; }
 .word-track span { display: block; height: 1.7em; line-height: 1.7em; }
 
@@ -135,9 +135,17 @@ footer a.block:hover { transform: translateX(6px); color: #00FFD4; }
 .t-arrow { position: absolute; top: 50%; z-index: 2; display: flex; height: 3rem; width: 3rem; align-items: center; justify-content: center; border-radius: 9999px; background: #fff; color: #050208; box-shadow: 0 8px 24px rgba(5, 2, 8, .18); transform: translateY(-50%); transition: background .2s, color .2s, transform .2s; }
 .t-arrow:hover { background: #5465FF; color: #fff; transform: translateY(-50%) scale(1.1); }
 .t-arrow:active { transform: translateY(-50%) scale(.94); }
-.t-progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; transform-origin: left; background: #00FFD4; animation: tProg 6.5s linear forwards; }
+.t-progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; transform-origin: left; background: #5465FF; animation: tProg 6.5s linear forwards; }
 @keyframes tProg { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .t-dot { height: 8px; width: 8px; border-radius: 9999px; background: #C4D0FA; transition: width .3s, background .3s; }
 .t-dot.on { width: 28px; background: #5465FF; }
 
 ::selection { background: #5465FF; color: #fff; }
+
+/* ===== home page panels: each section sits in its own rounded rectangle ===== */
+@layer components {
+  .panel-wrap { @apply mx-auto mt-5 max-w-6xl px-3 sm:mt-6 sm:px-5; }
+  .panel { @apply rounded-[1.75rem] border border-line bg-white p-5 sm:rounded-[2rem] sm:p-8 md:p-10; }
+}
+/* cards inside a white panel get the soft page tint so they still stand apart (dark cards keep their colour) */
+.panel .card:not(.bg-ink) { background: #EEF2FF; box-shadow: none; }

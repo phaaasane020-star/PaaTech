@@ -72,7 +72,7 @@ export default function Settings() {
   return (
     <div className="max-w-3xl">
       <h1 className="text-3xl font-semibold">Settings</h1>
-      {msg && <p className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold">{msg}</p>}
+      {msg && <p className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white">{msg}</p>}
       <h2 className="mt-8 text-xl font-semibold">Branding</h2>
       <div className="mt-4 grid gap-5 md:grid-cols-2">
         <Upload field="favicon_url" tab title="Browser tab icon" help="The small image in the browser tab and on iPhone home screens. Use a square image (512×512 PNG works best)." />

@@ -21,7 +21,7 @@ export function ServiceCards({ phone, limit }) {
       {services.slice(0, limit || services.length).map((v, i) => (
         <article key={v.title} className={`card lift reveal flex flex-col ${v.featured ? 'border-ink bg-ink text-white md:col-span-2 lg:col-span-3' : ''}`}>
           <div className="flex items-center justify-between">
-            <span className={`flex h-11 w-11 items-center justify-center rounded-lg ${v.featured ? 'bg-accent text-ink' : 'bg-brand text-white'}`}>
+            <span className={`flex h-11 w-11 items-center justify-center rounded-lg ${v.featured ? 'bg-accent text-white' : 'bg-brand text-white'}`}>
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{I[v.icon]}</svg>
             </span>
             <span className={`text-sm ${v.featured ? 'text-white/60' : 'text-muted'}`}>{v.featured ? 'Featured' : String(i + 1).padStart(2, '0')}</span>
@@ -29,7 +29,7 @@ export function ServiceCards({ phone, limit }) {
           <h3 className="mt-5 text-xl font-semibold">{v.title}</h3>
           <p className={`mt-2 flex-1 text-sm md:max-w-2xl ${v.featured ? 'text-white/75' : 'text-muted'}`}>{v.text}</p>
           <div className="mt-4 flex flex-wrap gap-2">{v.tags.map((t) => <span key={t} className={`tag ${v.featured ? 'border-white/20 bg-white/[.06] text-white/85' : ''}`}>{t}</span>)}</div>
-          <a href={waLink(phone, `Hello, I need help with: ${v.title}`)} target="_blank" rel="noopener noreferrer" className={`mt-5 text-sm font-semibold ${v.featured ? 'text-accent' : 'text-brand'}`}>{v.featured ? 'Discuss your project →' : 'Request this service →'}</a>
+          <a href={waLink(phone, `Hello, I need help with: ${v.title}`)} target="_blank" rel="noopener noreferrer" className={`mt-5 text-sm font-semibold ${v.featured ? 'text-lav' : 'text-brand'}`}>{v.featured ? 'Discuss your project →' : 'Request this service →'}</a>
         </article>
       ))}
     </div>

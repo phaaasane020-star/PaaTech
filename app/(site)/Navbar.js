@@ -47,14 +47,14 @@ export default function Navbar({ name, wa }) {
             <Link key={h} href={h} aria-current={isOn(h) ? 'page' : undefined}
               className={`relative py-2 text-sm font-medium transition-colors ${isOn(h) ? 'text-white' : 'text-white/65 hover:text-white'}`}>
               {l}
-              <span aria-hidden="true" className={`absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-accent transition-transform duration-300 ${isOn(h) ? 'scale-x-100' : 'scale-x-0'}`} />
+              <span aria-hidden="true" className={`absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-white transition-transform duration-300 ${isOn(h) ? 'scale-x-100' : 'scale-x-0'}`} />
             </Link>
           ))}
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
           <a href={wa} target="_blank" rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-white active:scale-[.97] sm:inline-flex">
+            className="hidden items-center gap-1.5 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-110 active:scale-[.97] sm:inline-flex">
             Hire me
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
           </a>
@@ -71,7 +71,7 @@ export default function Navbar({ name, wa }) {
             <Link key={h} href={h} aria-current={isOn(h) ? 'page' : undefined}
               className={`flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white ${isOn(h) ? 'bg-white/15' : 'hover:bg-white/10'}`}><Icon>{icon}</Icon>{l}</Link>
           ))}
-          <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-ink">Hire me on WhatsApp</a>
+          <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white">Hire me on WhatsApp</a>
         </nav>
       )}
     </header>
