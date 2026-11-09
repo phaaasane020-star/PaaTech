@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-ink text-white md:min-h-[100svh]">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10" style={{ background: 'radial-gradient(45% 60% at 75% 45%, rgba(196,154,58,.16), transparent 70%)' }} />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10" style={{ background: 'radial-gradient(45% 60% at 75% 45%, rgba(84,101,255,.30), transparent 70%)' }} />
         {/* 3D robot (model-viewer, transparent background). Top block on phones; right half on desktop so the words sit on the left */}
         <div className="hero-in relative h-[50svh] min-h-[340px] w-full md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[52%] md:pt-20">
           <HeroRobot className="h-full w-full" />
@@ -106,7 +106,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto mt-24 max-w-6xl px-5">
-        <div className="card reveal border-brand bg-brand text-white">
+        <div className="card reveal border-ink bg-ink text-white">
           <h2 className="text-3xl font-semibold">Need your laptop or website sorted?</h2>
           <p className="mt-2 text-white/70">Message me on WhatsApp and let's get it done.</p>
           <a href={waLink(s?.phone, 'Hello, I need help with...')} className="mt-5 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-ink">Chat on WhatsApp</a>

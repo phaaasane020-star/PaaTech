@@ -37,7 +37,7 @@ export default function Settings() {
       <p className="text-xs text-muted">{help}</p>
       <div className="mt-4 grid grid-cols-2 gap-3">
         <div className="flex h-24 items-center justify-center rounded-lg border border-line bg-white">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-muted">No image</span>}</div>
-        <div className="flex h-24 items-center justify-center rounded-lg bg-brand">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-white/60">No image</span>}</div>
+        <div className="flex h-24 items-center justify-center rounded-lg bg-ink">{s[field] ? <img src={s[field]} alt="" className="max-h-16 max-w-[80%]" /> : <span className="text-xs text-white/60">No image</span>}</div>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <input type="file" accept="image/png,image/svg+xml,image/jpeg,image/x-icon" className="text-sm" onChange={(e) => upload(field, e.target.files[0])} />

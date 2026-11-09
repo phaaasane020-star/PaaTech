@@ -7,7 +7,7 @@ export function PageHead({ label, title, text }) {
   return (
     <section className="bg-brand text-white">
       <div className="mx-auto max-w-6xl px-5 pb-14 pt-32 md:pb-20 md:pt-40">
-        <p className="hero-in text-xs font-semibold uppercase tracking-[.16em] text-accent">{label}</p>
+        <p className="hero-in text-xs font-semibold uppercase tracking-[.16em] text-white/90">{label}</p>
         <h1 className="hero-in d1 mt-3 text-4xl font-bold leading-[1.05] md:text-6xl">{title}</h1>
         {text && <p className="hero-in d2 mt-4 max-w-xl text-lg text-white/70">{text}</p>}
       </div>
@@ -19,7 +19,7 @@ export function ServiceCards({ phone, limit }) {
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {services.slice(0, limit || services.length).map((v, i) => (
-        <article key={v.title} className={`card lift reveal flex flex-col ${v.featured ? 'bg-brand text-white md:col-span-2 lg:col-span-3' : ''}`}>
+        <article key={v.title} className={`card lift reveal flex flex-col ${v.featured ? 'border-ink bg-ink text-white md:col-span-2 lg:col-span-3' : ''}`}>
           <div className="flex items-center justify-between">
             <span className={`flex h-11 w-11 items-center justify-center rounded-lg ${v.featured ? 'bg-accent text-ink' : 'bg-brand text-white'}`}>
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{I[v.icon]}</svg>

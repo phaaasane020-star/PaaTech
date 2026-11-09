@@ -1,7 +1,7 @@
 module.exports = {
   content: ['./app/**/*.{js,jsx}'],
   theme: { extend: {
-    colors: { paper: '#FAF8F3', line: '#E6E1D6', ink: '#0B1A14', muted: '#55605A', brand: '#0F3D2E', accent: '#C49A3A', 'accent-deep': '#8F6D22', lav: '#B8B39F' },
+    colors: { paper: '#EEF2FF', line: '#D2DDFF', ink: '#050208', muted: '#4A4F6A', brand: '#5465FF', accent: '#00FFD4', 'accent-deep': '#5465FF', lav: '#D2DDFF' },
     fontFamily: { sans: ['var(--font-inter)', 'sans-serif'], display: ['var(--font-grotesk)', 'sans-serif'] }
   } },
   plugins: []
